@@ -15,7 +15,8 @@ import {
   Clock,
   MapPin,
   School,
-  Calendar
+  Calendar,
+  FileText
 } from 'lucide-react';
 import ApiService from '../services/ApiService';
 import UsersManagement from './crud/UsersManagement';
@@ -29,6 +30,8 @@ import HorariosManagement from './crud/HorariosManagement';
 import CarrerasManagement from './crud/CarrerasManagement';
 import FacultadesManagement from './crud/FacultadesManagement';
 import GestionesManagement from './crud/GestionesManagement';
+import BitacoraManagement from './crud/BitacoraManagement';
+
 import '../styles/Dashboard.css';
 import '../styles/CRUD.css';
 
@@ -70,6 +73,8 @@ function Dashboard() {
     { id: 'carreras', label: 'Carreras', icon: School },
     { id: 'facultades', label: 'Facultades', icon: MapPin },
     { id: 'gestiones', label: 'Gestiones', icon: Calendar },
+    { id: 'bitacora', label: 'Bitácora', icon: FileText },
+    
   ];
   
   const renderContent = () => {
@@ -197,6 +202,7 @@ function Dashboard() {
               </div>
             </div>
 
+
             <div className="dashboard-card" onClick={() => setActiveSection('gestiones')}>
               <div className="card-content">
                 <div className="card-icon emerald">
@@ -208,7 +214,25 @@ function Dashboard() {
                 </div>
               </div>
             </div>
+
+
+             <div className="dashboard-card" onClick={() => setActiveSection('bitacora')}>
+              <div className="card-content">
+                <div className="card-icon cyan">
+                  <MapPin size={24} />
+                </div>
+                <div className="card-info">
+                  <h3>Bitacora</h3>
+                  <p>Administrar Bitacora</p>
+                </div>
+              </div>
+            </div>
+
+            
           </div>
+
+            
+
         );
       case 'users':
         return <UsersManagement />;
@@ -232,6 +256,8 @@ function Dashboard() {
         return <FacultadesManagement />;
       case 'gestiones':
         return <GestionesManagement />;
+      case 'bitacora':
+        return <BitacoraManagement />;
       default:
         return (
           <div className="content-section">

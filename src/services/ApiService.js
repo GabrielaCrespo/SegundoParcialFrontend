@@ -364,6 +364,17 @@ static async toggleUser(id) {
       method: 'DELETE',
     });
   }
+
+
+  // ✅ Bitácora (Activity Log) endpoints
+  static async getBitacora(params = {}) {
+    const query = new URLSearchParams(params).toString();
+    return this.request(`/bitacora${query ? `?${query}` : ''}`);
+  }
+
+  static async getBitacoraById(id) {
+    return this.request(`/bitacora/${id}`);
+  }
 }
 
 export default ApiService;
