@@ -16,7 +16,8 @@ import {
   MapPin,
   School,
   Calendar,
-  FileText
+  FileText,
+  ClipboardList
 } from 'lucide-react';
 import ApiService from '../services/ApiService';
 import UsersManagement from './crud/UsersManagement';
@@ -26,11 +27,14 @@ import DocentesManagement from './crud/DocentesManagement';
 import CoordinadoresManagement from './crud/CoordinadoresManagement';
 import MateriasManagement from './crud/MateriasManagement';
 import AulasManagement from './crud/AulasManagement';
+import AsignacionManagement from './crud/AsignacionManagement';
 import HorariosManagement from './crud/HorariosManagement';
 import CarrerasManagement from './crud/CarrerasManagement';
 import FacultadesManagement from './crud/FacultadesManagement';
 import GestionesManagement from './crud/GestionesManagement';
 import BitacoraManagement from './crud/BitacoraManagement';
+import GruposManagement from './crud/GruposManagement';
+import HorarioVisualizado from './crud/HorarioVisualizado';
 
 import '../styles/Dashboard.css';
 import '../styles/CRUD.css';
@@ -68,6 +72,9 @@ function Dashboard() {
     { id: 'docentes', label: 'Docentes', icon: GraduationCap },
     { id: 'coordinadores', label: 'Coordinadores', icon: UserCheck },
     { id: 'materias', label: 'Materias', icon: BookOpen },
+    { id: 'grupos', label: 'Grupos', icon: Users },
+    { id: 'asignacion', label: 'Asignación', icon: ClipboardList },
+    { id: 'horario-visualizado', label: 'Ver Horarios', icon: Calendar },
     { id: 'aulas', label: 'Aulas', icon: Building },
     { id: 'horarios', label: 'Horarios', icon: Clock },
     { id: 'carreras', label: 'Carreras', icon: School },
@@ -150,6 +157,42 @@ function Dashboard() {
                 <div className="card-info">
                   <h3>Materias</h3>
                   <p>Gestión de materias académicas</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="dashboard-card" onClick={() => setActiveSection('grupos')}>
+              <div className="card-content">
+                <div className="card-icon blue">
+                  <Users size={24} />
+                </div>
+                <div className="card-info">
+                  <h3>Grupos</h3>
+                  <p>Gestión de grupos académicos</p>
+                </div>
+              </div>
+            </div>
+
+             <div className="dashboard-card" onClick={() => setActiveSection('asignacion')}>
+              <div className="card-content">
+                <div className="card-icon green">
+                  <ClipboardList size={24} />
+                </div>
+                <div className="card-info">
+                  <h3>Asignación</h3>
+                  <p>Administrar asignaciones</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="dashboard-card" onClick={() => setActiveSection('horario-visualizado')}>
+              <div className="card-content">
+                <div className="card-icon purple">
+                  <Calendar size={24} />
+                </div>
+                <div className="card-info">
+                  <h3>Ver Horarios</h3>
+                  <p>Visualización formato tabla</p>
                 </div>
               </div>
             </div>
@@ -246,6 +289,12 @@ function Dashboard() {
         return <CoordinadoresManagement />;
       case 'materias':
         return <MateriasManagement />;
+      case 'grupos':
+        return <GruposManagement />;
+      case 'asignacion':
+        return <AsignacionManagement />;
+      case 'horario-visualizado':
+        return <HorarioVisualizado />;
       case 'aulas':
         return <AulasManagement />;
       case 'horarios':

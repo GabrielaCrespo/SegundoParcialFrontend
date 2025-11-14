@@ -376,6 +376,81 @@ static async toggleUser(id) {
   static async getBitacoraById(id) {
     return this.request(`/bitacora/${id}`);
   }
+
+
+    // ============================
+  //     GRUPOS endpoints
+  // ============================
+
+  static async getGrupos(params = {}) {
+    const query = new URLSearchParams(params).toString();
+    return this.request(`/grupos${query ? `?${query}` : ''}`);
+  }
+
+  static async createGrupo(grupoData) {
+    return this.request('/grupos', {
+      method: 'POST',
+      body: JSON.stringify(grupoData),
+    });
+  }
+
+  static async updateGrupo(id, grupoData) {
+    return this.request(`/grupos/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(grupoData),
+    });
+  }
+
+  static async deleteGrupo(id) {
+    return this.request(`/grupos/${id}`, {
+      method: 'DELETE',
+    });
+  }
+
+  // ============================
+  //   ASIGNACIONES endpoints
+  // ============================
+
+  static async getAsignaciones(params = {}) {
+    const query = new URLSearchParams(params).toString();
+    return this.request(`/asignaciones${query ? `?${query}` : ''}`);
+  }
+
+  static async getAsignacion(id) {
+    return this.request(`/asignaciones/${id}`);
+  }
+
+  static async createAsignacion(asignacionData) {
+    return this.request('/asignaciones', {
+      method: 'POST',
+      body: JSON.stringify(asignacionData),
+    });
+  }
+
+  static async updateAsignacionSlots(id, slots) {
+    return this.request(`/asignaciones/${id}/slots`, {
+      method: 'PATCH',
+      body: JSON.stringify({ slots }),
+    });
+  }
+
+  static async deleteAsignacion(id) {
+    return this.request(`/asignaciones/${id}`, {
+      method: 'DELETE',
+    });
+  }
+
+  static async checkConflicts(conflictData) {
+    return this.request('/asignaciones/conflictos', {
+      method: 'POST',
+      body: JSON.stringify(conflictData),
+    });
+  }
+
+
 }
+
+
+
 
 export default ApiService;
