@@ -1,6 +1,5 @@
 const API_BASE_URL =
-  // process.env.REACT_APP_API_BASE || 'http://127.0.0.1:8000/api';
-  process.env.REACT_APP_API_BASE || 'https://segundoparcialbackend-qzv9.onrender.com/api';
+  process.env.REACT_APP_API_BASE || 'https://backend-sga.onrender.com/api';
 
 class ApiService {
   static async request(endpoint, options = {}) {

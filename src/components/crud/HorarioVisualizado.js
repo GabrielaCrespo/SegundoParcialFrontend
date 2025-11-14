@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, Filter, RefreshCw } from 'lucide-react';
+import { RefreshCw } from 'lucide-react';
 import ApiService from '../../services/ApiService';
 
 function HorarioVisualizado() {
@@ -40,6 +40,7 @@ function HorarioVisualizado() {
     if (filterGestion) {
       loadAsignaciones();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterGestion, filterMateria, filterGrupo, filterDocente, filterAula]);
 
   const loadInitialData = async () => {
